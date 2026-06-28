@@ -1,10 +1,12 @@
 # dbskill
 
-dontbesilent 商业诊断工具箱。从 12,307 条推文中提炼方法论，做成 21 个 Agent skill。
+dontbesilent 商业诊断工具箱。从 12,307 条推文中提炼方法论，做成 23 个 Agent skill。
 
 可在 Claude Code、Codex、Cursor、Trae Solo 等任意支持 skill / system prompt 的 Agent 上使用。
 
-**最新更新：v2.14.3**
+**最新更新：v2.15.0**
+
+**v2.15.0 更新**：集中导航逻辑。把 `/dbs` 升级为双模式路由器——任务前帮你找对工具，任务后读诊断结论推荐 2-3 个下一步。同时清理了 22 个 skill 末尾原来各自分散的"下一步建议"表，统一指向 `/dbs`，不知道下一步就回 `/dbs`。
 
 **v2.14.3 更新**：新增两个内容传播工具。`/dbs-spread` 传播心理解码——用 5 个经典传播学理论分析已有内容为什么能引起共鸣，输出受众情绪底层和聊天室讨论方向。`/dbs-resonate` 文稿共鸣诊断——写完文稿但心里没底时用，专门识别「写得全面但没刺中核心」的问题，给出具体删改建议。
 
@@ -46,7 +48,7 @@ npx -y skills add dontbesilent2025/dbskill -g --all
 
 #### Trae Solo
 
-Trae Solo 一个 zip 装一个 skill。从 [GitHub Releases](https://github.com/dontbesilent2025/dbskill/releases) 下载最新的 `dbskill-版本号.zip`，解压后里面是 21 个独立的 skill zip（每个 zip 解压后根级是 `SKILL.md`），逐个拖进 Trae Solo 的「上传技能」窗口即可。
+Trae Solo 一个 zip 装一个 skill。从 [GitHub Releases](https://github.com/dontbesilent2025/dbskill/releases) 下载最新的 `dbskill-版本号.zip`，解压后里面是 23 个独立的 skill zip（每个 zip 解压后根级是 `SKILL.md`），逐个拖进 Trae Solo 的「上传技能」窗口即可。
 
 如果想本地构建，运行 `bash tools/build-skills.sh`，产物在 `dist/skills/`。
 
@@ -85,7 +87,7 @@ npx -y skills add dontbesilent2025/dbskill -g --all
 
 | Skill | 做什么 |
 |---|---|
-| `/dbs` | 主入口，自动路由到对的工具 |
+| `/dbs` | 主入口 + 导航中枢。任务前路由到对的工具；走完任何 skill 后输入 `/dbs`，它读诊断结论推荐 2-3 个下一步 |
 | `/dbs-diagnosis` | 商业模式诊断。消解问题，不回答问题 |
 | `/dbs-benchmark` | 对标分析。五重过滤，排除噪音 |
 | `/dbs-content` | 内容创作诊断。五维检测 |
@@ -99,6 +101,13 @@ npx -y skills add dontbesilent2025/dbskill -g --all
 | `/dbs-goal` | 目标清晰化。把模糊目标审计成可检查的交付物 |
 | `/dbs-good-question` 或 `/好问题` | 好问题生成器。把模糊问题改成 Agent 可推理、可批评、可验证的问题说明书 |
 | `/dbs-decision` 或 `/决策系统` | 个人决策系统。把任何长期跟踪的领域做成本地知识工程，四层结构 + 来源标签 + 隐私模式 |
+
+### 内容传播工具
+
+| Skill | 做什么 |
+|---|---|
+| `/dbs-spread` | 传播心理解码。用 5 个经典传播学理论分析已有内容为什么能引起共鸣，输出受众情绪底层和聊天室讨论方向 |
+| `/dbs-resonate` | 文稿共鸣诊断。写完文稿但心里没底时用，专门识别「写得全面但没刺中核心」的问题，给出具体删改建议 |
 
 ### 学习工具
 
@@ -154,12 +163,6 @@ npx -y skills add dontbesilent2025/dbskill -g --all
 | Skill | 做什么 |
 |---|---|
 | `/dbs-agent-migration` | Agent 工作台迁移。把任意项目整理成 Claude Code / Codex / Grok 三端一致的 Agent 工作台：审计规则文件、识别真源、统一命名与 bridge |
-
-### 进阶-内容工程模块
-
-| Skill | 做什么 |
-|---|---|
-| `/dbs-content-system` | 内容结构化系统。`dbskill` 里的单目录重型模块。先审计内容规模与边界，再建立新工程、复制原始素材、抽取内容单元、生成主题地图与选题装配稿 |
 
 ### chatroom 系列
 
@@ -230,41 +233,7 @@ save（把结论、否决方向、下一步存档到本地）
 
 诊断走到「问题被消解」「报告输出」「行动方案确定」这类节点时，相关 skill 会主动建议你 `/dbs-save`。后面回来时一句「接着上次」或 `/dbs-restore` 就能继续，不用从头再讲一遍背景。
 
-Skill 之间会自动推荐下一步。比如：
-- diagnosis 发现方向成立但缺具体路径 → 推荐 benchmark
-- diagnosis 发现核心卡点是心理或执行 → 推荐 action
-- diagnosis 发现用户在关键决策上走捷径 → 推荐 slowisfast
-- diagnosis 发现问题里的概念没定义清楚 → 推荐 deconstruct
-- diagnosis 发现用户的"问题"其实是个空转目标，原话本身就不能驱动行动 → 推荐 goal
-- benchmark 找到对标后，进入具体表达和内容执行 → 推荐 content
-- benchmark 发现用户在模仿路径上贪快 → 推荐 slowisfast
-- benchmark 发现逃避执行 → 推荐 action
-- benchmark 发现用户的目标本身就是模糊的，找不到该模仿谁 → 推荐 goal
-- content 发现开头问题 → 推荐 hook
-- content 需要起标题 → 推荐 xhs-title
-- content 检测出 AI 味 → 推荐 ai-check
-- content 发现内容方法上在走捷径 → 推荐 slowisfast
-- 用户已经有大量本地内容，想把旧内容变成可复用资产 → 推荐 `dbs-content-system`
-- action 发现不是执行力问题，而是方法选错了 → 推荐 slowisfast
-- action 发现用户做不动是因为目标本身就是空转的 → 推荐 goal
-- deconstruct 拆完概念后发现整句话是空转目标 → 推荐 goal
-- goal 审计通过但用户做不动 → 推荐 action
-- goal 审计通过但缺路径 → 推荐 benchmark
-- goal 审计通过但牵涉具体内容创作 → 推荐 content / hook / xhs-title
-- goal 审计中发现某个词是伪概念 → 推荐 deconstruct
-- 用户的问题太松、想判断能不能让 Agent 自动化解决、需要写问题说明书 → 推荐 good-question
-- good-question 发现问题本身是空转目标 → 推荐 goal
-- good-question 发现核心概念没定义 → 推荐 deconstruct
-- good-question 已经生成清楚的商业问题 → 推荐 diagnosis / benchmark / content
-- 任何阶段如果用户想先听不同视角 → 推荐 chatroom
-- 任何阶段如果用户用了模糊概念 → 推荐 deconstruct
-- 用户明确提到 Claude Code、Codex、Grok、`AGENTS.md`、`CLAUDE.md`、skill bridge、工作台迁移、三端统一，或说“我的 Agent 工作台很乱”“帮我统一 Claude 和 Codex 和 Grok” → 推荐 `dbs-agent-migration`
-- 用户明确提到内容结构化系统、内容资产工程化、主题地图、选题装配，或想把大量本地素材做成一个可持续生长的内容工程 → 推荐 `dbs-content-system`
-- 用户想系统学习一个主题、继续下一篇、根据学习反馈推进课程 → 推荐 `dbs-learning`
-- goal / good-question / diagnosis 已经清楚到要进入具体选择与执行 → 推荐 `dbs-decision`
-- diagnosis / benchmark / content / action / deconstruct / goal 走到有结论的节点 → 推荐 `dbs-save`
-- 用户说「上次」「之前的」「接着」「续上」 → 推荐 `dbs-restore`
-- save 累积 ≥3 份存档或用户说「打包」「整理一份」「给合伙人看的」 → 推荐 `dbs-report`
+不知道下一步走哪个 skill？输入 `/dbs`——它会读取你刚才的诊断结论，推荐 2-3 个值得走的下一步，每个都说清楚为什么。
 
 ---
 
