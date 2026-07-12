@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "dontbesilent 商业诊断工具箱 — 将累计推文中经过筛选的内容整理为 4176 个知识原子、26 个商业 Skill 和 1 个系统更新入口",
-    "version": "2.17.4"
+    "version": "2.17.5"
   },
   "plugins": [
     {

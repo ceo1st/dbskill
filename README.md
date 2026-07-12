@@ -6,9 +6,9 @@ dbskill 由自媒体博主 dontbesilent 创建，全网可搜 `@dontbesilent 聊
 
 适用于任何有真实任务需要推进的人。你可以交付问题、材料、目标、选择或持续卡点，dbskill 会根据当前信息调用合适的 Skill。
 
-**最新更新：v2.17.4**
+**最新更新：v2.17.5**
 
-**v2.17.4 更新**：新增 `dbs-update` 系统更新入口。已安装用户直接对 Agent 说「更新 dbskill」，即可同步官方 dbskill；不更新其他 Skill，也不修改本地存档、报告和决策记录。
+**v2.17.5 更新**：升级 `dbs-chatroom`。推荐先筛经过长期检验的理论，再选择代表人物；聊天室在判官总结后保持开启，用户继续输入时沿用同一组专家，输入「结束聊天室」或 `/dbs` 才退出。
 
 [新手从这里开始](docs/新手入门.md) · [查看全部 Skill](docs/新手入门.md#skill-全目录) · [安装 dbskill](#安装) · [关注作者](https://x.com/dontbesilent)
 
