@@ -142,7 +142,7 @@ Packages are created in `dist/skills/`. Local experimental Skills whose names co
 
 Author: [@dontbesilent](https://x.com/dontbesilent) · [Xiaohongshu](https://xhslink.com/m/637xuspR4iI) · [Douyin](https://v.douyin.com/pRUDhpBqOrc/)
 
-For paid Q&A support, scan the QR code or see the [group details](https://mp.weixin.qq.com/s/V7Dr0-75VYZOLJ6lbT_s0w).
+For paid Q&A support, scan the QR code or see the [group details](https://mp.weixin.qq.com/s/RpwNjMo4M_er4GOrfCYt1g).
 
 ![Paid Q&A group QR code](docs/paid-qa-group-qrcode.png)
 

@@ -142,7 +142,7 @@ bash tools/build-skills.sh
 
 作者：[@dontbesilent](https://x.com/dontbesilent) · [小紅書](https://xhslink.com/m/637xuspR4iI) · [抖音](https://v.douyin.com/pRUDhpBqOrc/)
 
-如需加入付費問答群，可掃描 QR Code 或開啟[群組說明](https://mp.weixin.qq.com/s/V7Dr0-75VYZOLJ6lbT_s0w)。
+如需加入付費問答群，可掃描 QR Code 或開啟[群組說明](https://mp.weixin.qq.com/s/RpwNjMo4M_er4GOrfCYt1g)。
 
 ![付費問答群 QR Code](docs/paid-qa-group-qrcode.png)
 

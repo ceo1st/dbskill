@@ -142,7 +142,7 @@ bash tools/build-skills.sh
 
 作者：[@dontbesilent](https://x.com/dontbesilent) · [小紅書](https://xhslink.com/m/637xuspR4iI) · [抖音](https://v.douyin.com/pRUDhpBqOrc/)
 
-有料 Q&A サポートは、QR コードを読み取るか、[グループの案内](https://mp.weixin.qq.com/s/V7Dr0-75VYZOLJ6lbT_s0w) をご覧ください。
+有料 Q&A サポートは、QR コードを読み取るか、[グループの案内](https://mp.weixin.qq.com/s/RpwNjMo4M_er4GOrfCYt1g) をご覧ください。
 
 ![有料 Q&A グループの QR コード](docs/paid-qa-group-qrcode.png)
 

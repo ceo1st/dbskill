@@ -142,7 +142,7 @@ bash tools/build-skills.sh
 
 작성자: [@dontbesilent](https://x.com/dontbesilent) · [샤오홍슈](https://xhslink.com/m/637xuspR4iI) · [더우인](https://v.douyin.com/pRUDhpBqOrc/)
 
-유료 Q&A 지원은 QR 코드를 스캔하거나 [그룹 안내](https://mp.weixin.qq.com/s/V7Dr0-75VYZOLJ6lbT_s0w)를 확인하세요.
+유료 Q&A 지원은 QR 코드를 스캔하거나 [그룹 안내](https://mp.weixin.qq.com/s/RpwNjMo4M_er4GOrfCYt1g)를 확인하세요.
 
 ![유료 Q&A 그룹 QR 코드](docs/paid-qa-group-qrcode.png)
 
