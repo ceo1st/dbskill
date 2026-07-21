@@ -4,7 +4,7 @@
 
 > 面向创业者与内容创作者的中文 AI Skills 工具箱。把真实业务、内容与行动问题交给 Agent，获得清晰判断和可以立刻执行的下一步。
 
-[![Version](https://img.shields.io/badge/version-2.18.2-2563EB.svg?style=flat-square)](VERSION)
+[![Version](https://img.shields.io/badge/version-2.18.3-2563EB.svg?style=flat-square)](VERSION)
 [![skills.sh](https://skills.sh/b/dontbesilent2025/dbskill)](https://skills.sh/dontbesilent2025/dbskill)
 [![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-16A34A.svg?style=flat-square)](LICENSE)
 
@@ -12,9 +12,9 @@
 
 dbskill 由 [dontbesilent](https://x.com/dontbesilent) 创建。从 16,152 条公开推文中筛选、结构化出 4,176 个知识原子，并将其中的方法沉淀为 28 个可直接调用的 Skills。
 
-[快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [完整使用手册](docs/新手入门.md) · [更新日志](https://github.com/dontbesilent2025/dbskill/releases)
+[快速开始](#快速开始) · [安装](#安装) · [能力一览](#能力一览) · [公开推文集](#公开推文集) · [完整使用手册](docs/新手入门.md) · [更新日志](https://github.com/dontbesilent2025/dbskill/releases)
 
-本次更新（v2.18.1）：`dbs-learning` 新增项目知识基础确认。新课题可先识别本地已有表达，再由用户选择基于项目、从零开始或指定材料；同时增加敏感材料排除、候选证据表述和分支验收规则。
+本次更新（v2.18.3）：新增 dontbesilent 公开推文集，提供 Markdown 阅读版和 PDF 阅读版；同时整理公开文件路径，内部审核材料不进入公开目录。
 
 ![dbskill 动态路由图](docs/skill-link-map.svg)
 
@@ -124,6 +124,15 @@ dbskill 的重点是推进眼前真实的任务。它会先处理当前最有价
 - 想把自己的本地文件夹直接当作知识库，使用 `/dbs-knowledge` 建立导航并持续查找、收录和调用资料。
 - 想跨对话保留工作，使用 `/dbs-save`、`/dbs-restore` 与 `/dbs-report`。数据默认保存在用户本机的 `~/.dbs/`。
 
+## 公开推文集
+
+公开推文集收录经过整理的 dontbesilent 推文原文，提供两种格式：
+
+- [Markdown 阅读版](books/dontbesilent-开源推文集.md)：适合搜索、复制和交给 AI 分析。
+- [PDF 阅读版](books/dontbesilent-开源推文集.pdf)：适合完整阅读和下载保存。
+
+推文集与 Skills 安装包相互独立。执行 `npx -y skills add dontbesilent2025/dbskill -g --all` 时，安装的是 Skills，不会自动下载推文集。
+
 ![dbskill 知识来源图](docs/knowledge-pipeline.svg)
 
 ## 项目结构
@@ -132,6 +141,7 @@ dbskill 的重点是推进眼前真实的任务。它会先处理当前最有价
 dbskill/
 ├── skills/                  # 28 个正式发布的 Skills + 1 个更新入口
 ├── 知识库/                   # 知识原子、方法论文档与概念词典
+├── books/                    # dontbesilent 公开推文集（Markdown + PDF）
 ├── docs/                    # 新手入门、图示与演示素材
 ├── .claude-plugin/          # Claude Code 插件市场定义
 └── tools/                   # 构建与维护脚本
